@@ -1,0 +1,91 @@
+create database Entities
+
+Create table books(
+ISBN int PRIMARY KEY,
+Title varchar(200),
+Author varchar(100),
+Genre varchar(100),
+price DECIMAL(10,2),
+Quantity_in_stock int(20)
+);
+
+select * from books;
+
+Insert into books
+values
+(9780733426094, 'Arms and the Man', 'George Bernard Shaw', 'novel ', 200.00 , 50),
+(9780733426086 ,' As I Lay Dying' , 'William Faulkner' , 'novel' , 350.00 , 30);
+
+Select * from books;
+
+Create Table Customers(
+
+customer_id int primary key ,
+name varchar(50) ,
+Email varchar(50),
+phone_number int ,
+shipping_address varchar(100)
+);
+
+select * from books;
+
+Insert into Customers
+values
+(101 , 'manish' , 'manish2023@gmail.com' , 1234567098 , 'bhavarkua indore '),
+(102 , 'prasang' , 'prasang2023@gmail.com' , 1234567097 , 'Vijaynagar indore ');
+
+Select  * from Books;
+
+create table orders(
+order_id int primary key ,
+order_date DATE,
+Total_Amount DECIMAL(10,2),
+foreign key(custome_id) references customers(customer_id)
+); 
+select * from orders;
+
+Insert into Orders
+values
+(201 , '2023-11-23', 500.00 )
+(202 , '2023-11-24', 400.00 );
+
+Select * from orders;
+
+
+Create table order_details(
+Quantity int ,
+subtotal decimal(10,2),
+foreign key(order_id) references orders(order_id),
+foreign key(ISBN) references books(isbn)
+);
+
+select * from order_details;
+
+Insert into order_details
+values
+(200, 2000.00 ),
+(300, 3000.00 );
+
+select * from orders_details ;
+
+
+Q.1 and Q.2 and Q.3 answere written above .
+
+Q.4 Write a SQL queries to update customer information . 
+
+ANS :- UPDATE cutomers
+       set phone_number = 9893123456 WHERE customer_id = 101 ;
+
+
+Q.5  Write SQL queries to delete books that are no longer in stock.
+
+ANS :- DELETE from books where quantity_in_stock = 0;
+
+Q.6 : Write SQL queries to generate a report showing the total revenue generated from orders.
+
+ANS :- SELECT(SUM) as total_amount from orders ; 
+
+
+
+
+
